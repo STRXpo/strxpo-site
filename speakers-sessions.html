@@ -176,6 +176,24 @@
   .apply-card h3{ font-family:var(--font-display); font-size:1.2rem; font-weight:600; margin:0 0 0.6rem; }
   .apply-card p{ color:var(--slate-light); font-size:0.9rem; margin:0 0 1.5rem; }
 
+  /* Speaker application form */
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem; }
+  .form-row.single{ grid-template-columns:1fr; }
+  @media (max-width:600px){ .form-row{grid-template-columns:1fr;} }
+  .apply-card input, .apply-card textarea{
+    width:100%; padding:0.85rem 1rem;
+    border-radius:8px; border:1px solid var(--slate-line);
+    background:var(--charcoal); color:var(--paper);
+    font-family:var(--font-body); font-size:0.95rem;
+  }
+  .apply-card textarea{ resize:vertical; min-height:90px; }
+  .apply-card input::placeholder, .apply-card textarea::placeholder{ color:var(--paper-dim); }
+  .apply-card input:focus, .apply-card textarea:focus{ border-color:var(--amber-mid); outline:none; }
+  .apply-card button{ width:100%; margin-top:0.5rem; justify-content:center; }
+  .form-success{ display:none; text-align:center; padding:1rem 0; }
+  .form-success h3{ font-family:var(--font-display); color:var(--amber-mid); font-size:1.2rem; margin:0 0 0.5rem; }
+  .form-success p{ color:var(--slate-light); margin:0; font-size:0.9rem; }
+
   /* Stats */
   .stats{
     border-top:1px solid var(--slate-line); border-bottom:1px solid var(--slate-line);
@@ -266,7 +284,7 @@
       <h1>Real operators, real results — not recycled keynotes.</h1>
       <p class="lede">Every session at STRXpo is led by someone who has actually done the work — scaling a portfolio, running turnover at volume, navigating a platform policy shift in real time. Not consultants reciting slide decks.</p>
       <div class="hero-ctas">
-        <a href="mailto:info@strxpo.com?subject=Speaker%20Application" class="btn btn-amber">Apply to speak</a>
+        <a href="#apply-form" class="btn btn-amber">Apply to speak</a>
         <a href="/#pre-registration" class="btn btn-ghost">Get session updates</a>
       </div>
     </div>
@@ -354,10 +372,28 @@
           <li>Tell us the topic and what attendees will walk away able to do</li>
         </ul>
       </div>
-      <div class="apply-card">
+      <div class="apply-card" id="apply-form">
         <h3>Apply to Speak</h3>
-        <p>Email us your topic idea and a bit about your background — we'll follow up as the agenda comes together.</p>
-        <a href="mailto:info@strxpo.com?subject=Speaker%20Application" class="btn btn-amber">Email your pitch</a>
+        <p>Tell us a bit about your topic and background — we'll follow up as the agenda comes together.</p>
+        <form id="speaker-app-form">
+          <div class="form-row">
+            <input name="fullName" type="text" placeholder="Full Name" required>
+            <input name="email" type="email" placeholder="Email" required>
+          </div>
+          <div class="form-row">
+            <input name="phone" type="tel" placeholder="Phone">
+            <input name="companyName" type="text" placeholder="Company / Title">
+          </div>
+          <div class="form-row single">
+            <textarea name="miscData" placeholder="Your topic idea, in a sentence or two" required></textarea>
+          </div>
+          <input type="hidden" name="role" value="Speaker Application">
+          <button type="submit" id="speaker-submit-btn" class="btn btn-amber">Submit Application</button>
+        </form>
+        <div class="form-success" id="speaker-form-success">
+          <h3>Thank you.</h3>
+          <p>Your application has been received — we'll follow up as the agenda comes together.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -405,6 +441,36 @@
       }
     })
     .catch(function(err) { console.error('Footer failed to load:', err); });
+</script>
+
+<script>
+  const speakerForm = document.getElementById('speaker-app-form');
+  const speakerSuccess = document.getElementById('speaker-form-success');
+  const speakerSubmitBtn = document.getElementById('speaker-submit-btn');
+
+  speakerForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    speakerSubmitBtn.textContent = 'Submitting...';
+    speakerSubmitBtn.disabled = true;
+    const formData = new FormData(speakerForm);
+    const payload = Object.fromEntries(formData.entries());
+    fetch('/.netlify/functions/submit-form', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (!data.success) { console.error('Partial failure:', data.results); }
+      speakerForm.style.display = 'none';
+      speakerSuccess.style.display = 'block';
+    })
+    .catch(function(error) {
+      console.error('Submission error:', error);
+      speakerSubmitBtn.textContent = 'Error - Try Again';
+      speakerSubmitBtn.disabled = false;
+    });
+  });
 </script>
 </body>
 </html>

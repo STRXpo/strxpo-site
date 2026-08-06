@@ -205,6 +205,28 @@
   .tier-card li{ font-size:0.9rem; color:var(--paper); display:flex; gap:0.6rem; align-items:flex-start; }
   .tier-card li::before{ content:"—"; color:var(--amber-mid); flex-shrink:0; }
 
+  /* Prospectus request form */
+  .bid-form-card{
+    border:1px solid var(--slate-line); border-radius:16px;
+    background:var(--slate-mid); padding:2.5rem;
+    max-width:720px;
+  }
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem; }
+  .form-row.single{ grid-template-columns:1fr; }
+  @media (max-width:600px){ .form-row{grid-template-columns:1fr;} }
+  .bid-form-card input, .bid-form-card select{
+    width:100%; padding:0.85rem 1rem;
+    border-radius:8px; border:1px solid var(--slate-line);
+    background:var(--charcoal); color:var(--paper);
+    font-family:var(--font-body); font-size:0.95rem;
+  }
+  .bid-form-card input::placeholder{ color:var(--paper-dim); }
+  .bid-form-card input:focus, .bid-form-card select:focus{ border-color:var(--amber-mid); outline:none; }
+  .bid-form-card button{ width:100%; margin-top:0.5rem; justify-content:center; }
+  .form-success{ display:none; text-align:center; padding:2rem 0; }
+  .form-success h3{ font-family:var(--font-display); color:var(--amber-mid); font-size:1.3rem; margin:0 0 0.5rem; }
+  .form-success p{ color:var(--slate-light); margin:0; }
+
   /* Process steps */
   .steps{ counter-reset:step; display:flex; flex-direction:column; gap:0; }
   .step{
@@ -332,7 +354,7 @@
       <h1>Meet decision-makers who came to invest, not browse.</h1>
       <p class="lede">STR<span style="color:var(--amber-mid);">Xpo</span> puts your brand in front of hosts and property managers actively shopping for their next tool, service, or channel — in one room, over three days, instead of a dozen separate sales calls.</p>
       <div class="hero-ctas">
-        <a href="mailto:info@strxpo.com?subject=Exhibitor%20Prospectus%20Request" class="btn btn-amber">Request the prospectus</a>
+        <a href="#prospectus-form" class="btn btn-amber">Request the prospectus</a>
         <a href="/#pre-registration" class="btn btn-ghost">Get early-access updates</a>
       </div>
     </div>
@@ -519,7 +541,7 @@
             <li>Listing in the official exhibitor directory</li>
             <li>Access to attendee registration data (aggregate/segmented)</li>
           </ul>
-          <a href="mailto:info@strxpo.com?subject=Exhibitor%20Prospectus%20Request" class="btn btn-ghost">Request details</a>
+          <a href="#prospectus-form" class="btn btn-ghost">Request details</a>
         </div>
         <div class="tier-card featured">
           <span class="featured-tag">Highest Visibility</span>
@@ -531,8 +553,43 @@
             <li>Speaking or session-sponsorship opportunities</li>
             <li>First right of refusal on next year's event</li>
           </ul>
-          <a href="mailto:info@strxpo.com?subject=Sponsorship%20Prospectus%20Request" class="btn btn-amber">Request details</a>
+          <a href="#prospectus-form" class="btn btn-amber">Request details</a>
           <a href="/sponsors.html" style="display:block; margin-top:0.75rem; font-family:var(--font-mono); font-size:0.78rem; color:var(--amber-mid); text-decoration:none;">See our sponsors &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROSPECTUS REQUEST FORM ============ -->
+  <section class="block" id="prospectus-form" style="padding-top:0;">
+    <div class="wrap">
+      <div class="block-head">
+        <span class="eyebrow">Request the Prospectus</span>
+        <h2>Get the full details</h2>
+        <p>Tell us a bit about yourself and we'll follow up with the exhibitor or sponsorship prospectus directly.</p>
+      </div>
+      <div class="bid-form-card">
+        <form id="prospectus-req-form">
+          <div class="form-row">
+            <input name="fullName" type="text" placeholder="Full Name" required>
+            <input name="email" type="email" placeholder="Email" required>
+          </div>
+          <div class="form-row">
+            <input name="phone" type="tel" placeholder="Phone">
+            <input name="companyName" type="text" placeholder="Company Name" required>
+          </div>
+          <div class="form-row single">
+            <select name="role" required>
+              <option value="" disabled selected>I'm Interested In...</option>
+              <option value="Exhibitor Prospectus">Exhibitor Prospectus</option>
+              <option value="Sponsorship Prospectus">Sponsorship Prospectus</option>
+            </select>
+          </div>
+          <button type="submit" id="prospectus-submit-btn" class="btn btn-amber">Request Prospectus</button>
+        </form>
+        <div class="form-success" id="prospectus-form-success">
+          <h3>Thank you.</h3>
+          <p>Your request has been received — our team will follow up with the full prospectus shortly.</p>
         </div>
       </div>
     </div>
@@ -579,7 +636,7 @@
         <p>Request the exhibitor or sponsorship prospectus and get priority placement before general sales open.</p>
       </div>
       <div class="cta-actions">
-        <a href="mailto:info@strxpo.com?subject=Exhibitor%20Prospectus%20Request" class="btn btn-amber">Request the prospectus</a>
+        <a href="#prospectus-form" class="btn btn-amber">Request the prospectus</a>
         <a href="/#pre-registration" class="btn btn-ghost">Get early-access updates</a>
       </div>
     </div>
@@ -604,6 +661,36 @@
       }
     })
     .catch(function(err) { console.error('Footer failed to load:', err); });
+</script>
+
+<script>
+  const prospectusForm = document.getElementById('prospectus-req-form');
+  const prospectusSuccess = document.getElementById('prospectus-form-success');
+  const prospectusSubmitBtn = document.getElementById('prospectus-submit-btn');
+
+  prospectusForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    prospectusSubmitBtn.textContent = 'Submitting...';
+    prospectusSubmitBtn.disabled = true;
+    const formData = new FormData(prospectusForm);
+    const payload = Object.fromEntries(formData.entries());
+    fetch('/.netlify/functions/submit-form', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (!data.success) { console.error('Partial failure:', data.results); }
+      prospectusForm.style.display = 'none';
+      prospectusSuccess.style.display = 'block';
+    })
+    .catch(function(error) {
+      console.error('Submission error:', error);
+      prospectusSubmitBtn.textContent = 'Error - Try Again';
+      prospectusSubmitBtn.disabled = false;
+    });
+  });
 </script>
 </body>
 </html>

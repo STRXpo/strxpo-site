@@ -476,23 +476,25 @@
   const venueForm = document.getElementById('venue-bid-form');
   const venueSuccess = document.getElementById('venue-form-success');
   const venueSubmitBtn = document.getElementById('venue-submit-btn');
-  const formspreeURL = 'https://formspree.io/f/xoeaqbkb';
-  const googleSheetURL = 'https://script.google.com/macros/s/AKfycbxaQiMeZ_PkRyKpuYWODQiuULADs4DPPejQonJQJcAGcUIxW3FUN_6QGXrLnpVZIhPJ/exec';
 
   venueForm.addEventListener('submit', function(e) {
     e.preventDefault();
     venueSubmitBtn.textContent = 'Submitting...';
     venueSubmitBtn.disabled = true;
     const formData = new FormData(venueForm);
-    Promise.all([
-      fetch(formspreeURL, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } }),
-      fetch(googleSheetURL, { method: 'POST', body: formData, mode: 'no-cors' })
-    ])
-    .then(() => {
+    const payload = Object.fromEntries(formData.entries());
+    fetch('/.netlify/functions/submit-form', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (!data.success) { console.error('Partial failure:', data.results); }
       venueForm.style.display = 'none';
       venueSuccess.style.display = 'block';
     })
-    .catch(error => {
+    .catch(function(error) {
       console.error('Submission error:', error);
       venueSubmitBtn.textContent = 'Error - Try Again';
       venueSubmitBtn.disabled = false;
