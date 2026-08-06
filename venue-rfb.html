@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Venue RFB — STRXpo | September 2027, Orlando, FL</title>
+<meta name="description" content="Orlando / Lake Buena Vista venues are invited to submit competitive bids to host STRXpo's inaugural event, September 2027. Request for Bid (RFB) details, requirements, and submission process.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://strxpo.com/venue-rfb.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Venue RFB — STRXpo">
+<meta property="og:description" content="Orlando / Lake Buena Vista venues are invited to submit competitive bids to host STRXpo's inaugural event, September 2027.">
+<meta property="og:url" content="https://strxpo.com/venue-rfb.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://strxpo.com/assets/logo.png">
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon-180.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --charcoal:#1C1F26;
+    --slate-mid:#262B36;
+    --slate-line: rgba(124,140,166,0.18);
+    --slate-light:#7C8CA6;
+    --amber-deep:#B9812B;
+    --amber-mid:#D9A441;
+    --amber-bright:#F0C15C;
+    --paper:#EDEBE4;
+    --paper-dim:#B9B6AC;
+    --font-display:'Fraunces', Georgia, serif;
+    --font-body:'Inter', -apple-system, sans-serif;
+    --font-mono:'JetBrains Mono', ui-monospace, monospace;
+    --max: 1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--charcoal); color:var(--paper);
+    font-family:var(--font-body); line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 6vw;}
+  .wrap-narrow{max-width:820px; margin:0 auto; padding:0 6vw;}
+  :focus-visible{ outline:2px solid var(--amber-bright); outline-offset:3px; }
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(28,31,38,0.86); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--slate-line);
+  }
+  .header-inner{ display:flex; align-items:center; justify-content:space-between; padding:0.7rem 6vw; }
+  .brand{display:flex; align-items:center; gap:0.75rem; text-decoration:none;}
+  .brand-logo{height:92px; width:auto; display:block;}
+  .brand-meta{
+    font-family:var(--font-mono); font-size:0.78rem; letter-spacing:0.5px;
+    padding-left:0.75rem; border-left:1px solid var(--slate-line); display:flex; gap:0.4rem;
+  }
+  .brand-meta .city{color:var(--slate-light);}
+  .brand-meta .year{color:var(--amber-mid); font-weight:500;}
+  @media (max-width:760px){ .brand-meta{display:none;} }
+  nav{display:flex; align-items:center; gap:2rem;}
+  nav a.navlink{
+    font-size:0.92rem; font-weight:500; color:var(--slate-light);
+    text-decoration:none; transition:color .15s ease;
+  }
+  nav a.navlink:hover, nav a.navlink.active{color:var(--paper);}
+  .btn{
+    display:inline-flex; align-items:center; gap:0.4rem;
+    font-family:var(--font-body); font-weight:600; font-size:0.9rem;
+    padding:0.65rem 1.15rem; border-radius:7px; border:1px solid transparent; cursor:pointer;
+    text-decoration:none; transition:transform .15s ease, opacity .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-amber{ background:linear-gradient(135deg, var(--amber-bright), var(--amber-deep)); color:var(--charcoal); }
+  .btn-amber:hover{opacity:0.92;}
+  .btn-ghost{ border-color:var(--slate-line); color:var(--paper); }
+  @media (max-width:760px){ nav a.navlink{display:none;} }
+
+  /* Page hero */
+  .page-hero{
+    padding:4.5rem 0 3rem; border-bottom:1px solid var(--slate-line);
+    background-image: radial-gradient(circle at 15% 0%, rgba(38,43,54,0.9) 0%, rgba(18,20,24,1) 65%);
+  }
+  .eyebrow{
+    font-family:var(--font-mono); font-size:0.78rem; letter-spacing:2.5px; text-transform:uppercase;
+    color:var(--amber-bright); display:flex; align-items:center; gap:0.6rem; margin-bottom:1.5rem;
+  }
+  .eyebrow::before{ content:""; width:7px; height:7px; border-radius:50%; background:var(--amber-mid); }
+  .page-hero h1{
+    font-family:var(--font-display); font-weight:600;
+    font-size:clamp(2.2rem, 4.6vw, 3.3rem); line-height:1.1; letter-spacing:-0.5px;
+    max-width:20ch; margin:0 0 1.1rem;
+  }
+  .page-hero p.lede{ font-size:1.1rem; color:var(--slate-light); max-width:58ch; margin:0 0 2rem; }
+
+  /* Submission window banner */
+  .window-banner{
+    display:flex; flex-wrap:wrap; gap:1.5rem 2.5rem; align-items:center;
+    border:1px solid rgba(217,164,65,0.35); border-radius:14px;
+    background:linear-gradient(135deg, rgba(217,164,65,0.08), rgba(217,164,65,0.02));
+    padding:1.75rem 2rem; max-width:760px;
+  }
+  .window-item .w-label{
+    font-family:var(--font-mono); font-size:0.7rem; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--amber-mid); display:block; margin-bottom:0.4rem;
+  }
+  .window-item .w-value{
+    font-family:var(--font-display); font-size:1.25rem; font-weight:600; color:var(--paper);
+  }
+  .window-item .w-value.tbd{ color:var(--paper-dim); font-style:italic; font-weight:400; font-size:1.05rem; }
+
+  section.block{padding:4.5rem 0;}
+  .block-head{max-width:680px; margin:0 0 2.5rem;}
+  .block-head h2{
+    font-family:var(--font-display); font-weight:600;
+    font-size:clamp(1.6rem, 2.8vw, 2.2rem); margin:0 0 0.9rem; letter-spacing:-0.3px;
+  }
+  .block-head p{color:var(--slate-light); font-size:1.02rem; margin:0;}
+
+  /* Requirements grid */
+  .req-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.5rem; }
+  .req-card{
+    border:1px solid var(--slate-line); border-radius:12px;
+    padding:1.85rem 1.75rem; background:var(--slate-mid);
+  }
+  .req-card .req-num{
+    font-family:var(--font-mono); font-size:0.76rem; color:var(--amber-mid); margin-bottom:0.9rem; display:block;
+  }
+  .req-card h3{ font-family:var(--font-display); font-size:1.1rem; font-weight:600; margin:0 0 0.6rem; }
+  .req-card p{ color:var(--slate-light); font-size:0.9rem; margin:0; }
+
+  /* RFP process steps */
+  .steps{ counter-reset:step; display:flex; flex-direction:column; gap:0; max-width:760px; }
+  .step{ display:flex; gap:1.75rem; padding:1.75rem 0; border-bottom:1px solid var(--slate-line); }
+  .step:last-child{ border-bottom:none; }
+  .step-num{
+    counter-increment:step; font-family:var(--font-display); font-weight:600;
+    font-size:1.6rem; color:var(--amber-mid); min-width:2.5rem; flex-shrink:0;
+  }
+  .step-num::before{ content: counter(step, decimal-leading-zero); }
+  .step-copy h3{ font-family:var(--font-display); font-size:1.1rem; font-weight:600; margin:0 0 0.4rem; }
+  .step-copy p{ color:var(--slate-light); font-size:0.93rem; margin:0; max-width:56ch; }
+
+  /* Proposal checklist */
+  .checklist{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:0.85rem; max-width:900px; }
+  .checklist li{
+    display:flex; gap:0.75rem; align-items:flex-start;
+    font-size:0.94rem; color:var(--paper);
+    border:1px solid var(--slate-line); border-radius:10px;
+    padding:1rem 1.2rem; background:var(--slate-mid);
+  }
+  .checklist li::before{ content:"—"; color:var(--amber-mid); flex-shrink:0; }
+
+  /* Invited venues */
+  .venue-chips{ display:flex; flex-wrap:wrap; gap:0.85rem; margin-bottom:1.5rem; }
+  .venue-chip{
+    border:1px solid var(--slate-line); border-radius:100px;
+    padding:0.75rem 1.4rem; background:var(--slate-mid);
+    font-size:0.95rem; font-weight:500; color:var(--paper);
+    display:flex; align-items:center; gap:0.6rem;
+  }
+  .venue-chip .dot{ width:7px; height:7px; border-radius:50%; background:var(--amber-mid); flex-shrink:0; }
+  .venue-note{ color:var(--slate-light); font-size:0.92rem; max-width:640px; margin:0; }
+
+  /* Bid form */
+  .bid-form-card{
+    border:1px solid var(--slate-line); border-radius:16px;
+    background:var(--slate-mid); padding:2.5rem;
+    max-width:720px;
+  }
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem; }
+  @media (max-width:600px){ .form-row{grid-template-columns:1fr;} }
+  .bid-form-card input, .bid-form-card select{
+    width:100%; padding:0.85rem 1rem;
+    border-radius:8px; border:1px solid var(--slate-line);
+    background:var(--charcoal); color:var(--paper);
+    font-family:var(--font-body); font-size:0.95rem;
+  }
+  .bid-form-card input::placeholder{ color:var(--paper-dim); }
+  .bid-form-card input:focus, .bid-form-card select:focus{ border-color:var(--amber-mid); outline:none; }
+  
+  .form-row.single{ grid-template-columns:1fr; }
+  .bid-form-card .full-row{ margin-bottom:1rem; }
+  .bid-form-card button{ width:100%; margin-top:0.5rem; justify-content:center; }
+  .form-success{ display:none; text-align:center; padding:2rem 0; }
+  .form-success h3{ font-family:var(--font-display); color:var(--amber-mid); font-size:1.3rem; margin:0 0 0.5rem; }
+  .form-success p{ color:var(--slate-light); margin:0; }
+
+  /* CTA band */
+  .cta-band{
+    border-top:1px solid var(--slate-line);
+    background:linear-gradient(160deg, rgba(38,43,54,0.75), rgba(28,31,38,0.92));
+  }
+  .cta-inner{
+    display:flex; flex-wrap:wrap; gap:2.5rem; align-items:center; justify-content:space-between; padding:4rem 0;
+  }
+  .cta-copy{ max-width:560px; }
+  .cta-copy h2{
+    font-family:var(--font-display); font-weight:600;
+    font-size:clamp(1.6rem, 2.8vw, 2.1rem); margin:0 0 0.75rem; letter-spacing:-0.3px;
+  }
+  .cta-copy p{ color:var(--slate-light); margin:0; font-size:1rem; }
+  .cta-actions{ display:flex; flex-direction:column; gap:0.75rem; min-width:230px; }
+  .cta-actions .btn{ justify-content:center; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="brand" aria-label="STRXpo home">
+      <img src="assets/logo-transparent.svg" alt="STRXpo" class="brand-logo">
+      <span class="brand-meta"><span class="city">Orlando</span> <span class="year">2027</span></span>
+    </a>
+    <nav>
+      <a class="navlink" href="/about.html">About</a>
+      <a class="navlink" href="/who-attends.html">Who Attends</a>
+      <a class="navlink" href="/exhibit-sponsor.html">Exhibit &amp; Sponsor</a>
+      <a class="navlink" href="/speakers-sessions.html">Speakers &amp; Sessions</a>
+      <a class="navlink" href="/faq.html">FAQ</a>
+      <a class="navlink" href="/contact.html">Contact</a>
+      <a class="navlink" href="/press.html">Press</a>
+      <a class="btn btn-amber" href="/#pre-registration">Pre-Register</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ PAGE HERO ============ -->
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Request for Bid (RFB) &nbsp;&middot;&nbsp; Venue &amp; Location</p>
+      <h1>Orlando's top venues are competing to host <span style="color:var(--slate-light);">STR</span><span style="color:var(--amber-mid);">Xpo</span>.</h1>
+      <p class="lede">STR<span style="color:var(--amber-mid);">Xpo</span>'s inaugural event will take place in the Orlando / Lake Buena Vista, FL area in September 2027. This is a Request for Bid (RFB), not a traditional shopping process — eligible venues are invited to compete for the selection by putting forward their best rates, availability, and added incentives. We're evaluating what each property is willing to offer to win the business.</p>
+
+      <div class="window-banner">
+        <div class="window-item">
+          <span class="w-label">Submissions Open</span>
+          <span class="w-value">September 2026</span>
+        </div>
+        <div class="window-item">
+          <span class="w-label">Submissions Close</span>
+          <span class="w-value">November 2026</span>
+        </div>
+        <div class="window-item">
+          <span class="w-label">Event Dates</span>
+          <span class="w-value">September 2027</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EVENT REQUIREMENTS ============ -->
+  <section class="block">
+    <div class="wrap">
+      <div class="block-head">
+        <span class="eyebrow">Event Overview</span>
+        <h2>What we're planning to host</h2>
+        <p>STR<span style="color:var(--amber-mid);">Xpo</span> is a first-of-its-kind national trade show for the vacation rental industry, running approximately three days.</p>
+      </div>
+      <div class="req-grid">
+        <div class="req-card">
+          <span class="req-num">Attendance</span>
+          <h3>1,000+ Attendees</h3>
+          <p>Year-one target across hosts, property managers, and industry professionals.</p>
+        </div>
+        <div class="req-card">
+          <span class="req-num">Exhibit Space</span>
+          <h3>75+ Exhibiting Brands</h3>
+          <p>Dedicated exhibit hall space to accommodate a growing exhibitor floor.</p>
+        </div>
+        <div class="req-card">
+          <span class="req-num">Sessions</span>
+          <h3>Main Stage &amp; Breakouts</h3>
+          <p>A general session space plus multiple breakout rooms for concurrent programming.</p>
+        </div>
+        <div class="req-card">
+          <span class="req-num">Duration</span>
+          <h3>Thursday–Saturday, 3-Day Event</h3>
+          <p>Day 1 Thursday through Day 3 Saturday, plus dedicated setup time ahead of the event (see Setup Access below).</p>
+        </div>
+        <div class="req-card">
+          <span class="req-num">Setup Access</span>
+          <h3>Wednesday 4:00 PM, Overnight</h3>
+          <p>Full venue access required beginning Wednesday at 4:00 PM, including overnight access, ahead of Thursday's start.</p>
+        </div>
+        <div class="req-card">
+          <span class="req-num">Lodging</span>
+          <h3>On-Site or Adjacent Hotel</h3>
+          <p>Room block capacity to support out-of-town attendees, exhibitors, and sponsors.</p>
+        </div>
+        <div class="req-card">
+          <span class="req-num">Location</span>
+          <h3>Orlando / Lake Buena Vista, FL</h3>
+          <p>Properties within this immediate market are eligible to submit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INVITED VENUES ============ -->
+  <section class="block" style="padding-top:0;">
+    <div class="wrap">
+      <div class="block-head">
+        <span class="eyebrow">Who We're Inviting</span>
+        <h2>Venues we'd love to hear from</h2>
+      </div>
+      <div class="venue-chips">
+        <span class="venue-chip"><span class="dot"></span>Rosen Shingle Creek</span>
+        <span class="venue-chip"><span class="dot"></span>Caribe Royale</span>
+        <span class="venue-chip"><span class="dot"></span>Walt Disney World Swan &amp; Dolphin</span>
+        <span class="venue-chip"><span class="dot"></span>Signia by Hilton Bonnet Creek</span>
+        <span class="venue-chip"><span class="dot"></span>Rosen Centre</span>
+        <span class="venue-chip"><span class="dot"></span>Rosen Plaza</span>
+        <span class="venue-chip"><span class="dot"></span>Wyndham Orlando Resort I-Drive</span>
+        <span class="venue-chip"><span class="dot"></span>Gaylord Palms</span>
+      </div>
+      <p class="venue-note">This list reflects properties well-suited to our scale, but it is not exclusive — any venue in the Orlando / Lake Buena Vista market that meets the requirements above is welcome and encouraged to submit a bid.</p>
+    </div>
+  </section>
+
+  <!-- ============ RFP PROCESS ============ -->
+  <section class="block" style="padding-top:0;">
+    <div class="wrap">
+      <div class="block-head">
+        <span class="eyebrow">The Process</span>
+        <h2>How the bid process works</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num"></span>
+          <div class="step-copy">
+            <h3>Submit Your Bid</h3>
+            <p>Interested venues submit a competitive bid to <a href="mailto:rfborlando2027@strxpo.com?subject=Venue%20RFB%20Submission" style="color:var(--amber-mid);">rfborlando2027@strxpo.com</a> during the open submission window, addressing the requirements and checklist below — including any added incentives you're offering to win the selection.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num"></span>
+          <div class="step-copy">
+            <h3>Review &amp; Compare</h3>
+            <p>Bids are reviewed side by side against event requirements, rates, and the incentives offered. Select venues may be invited to host a site visit or sharpen their offer.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num"></span>
+          <div class="step-copy">
+            <h3>Selection &amp; Contract</h3>
+            <p>The winning bid is selected and a contract executed. The selected venue will be publicly announced as part of STR<span style="color:var(--amber-mid);">Xpo</span>'s official launch announcement.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROPOSAL CHECKLIST ============ -->
+  <section class="block" style="padding-top:0;">
+    <div class="wrap">
+      <div class="block-head">
+        <span class="eyebrow">Bid Checklist</span>
+        <h2>What to include in your bid</h2>
+        <p>A complete, competitive bid should address the following:</p>
+      </div>
+      <ul class="checklist">
+        <li>Available dates and flexibility around September 2027</li>
+        <li>Total exhibit hall / event space square footage and floor plan</li>
+        <li>General session and breakout room capacity and configuration</li>
+        <li>On-site or adjacent hotel room block availability and rates</li>
+        <li>Food &amp; beverage capabilities: daily breakfast (exhibitors/sponsors, all 3 days), a Friday evening reception with appetizers, soft drinks, and a cash bar, and a Saturday closing dinner — please include per-person catering rates and any minimums</li>
+        <li>Audio-visual, internet, and production capabilities (in-house or preferred vendor)</li>
+        <li>Rental rates, packages, and any applicable service fees</li>
+        <li>Cancellation, rebooking, and force majeure terms</li>
+        <li>Parking, load-in/load-out access, and loading dock details</li>
+        <li>References from prior trade shows or conventions of comparable size</li>
+        <li>Any additional incentives, upgrades, or perks offered to strengthen your bid</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ BID SUBMISSION FORM ============ -->
+  <section class="block" style="padding-top:0;">
+    <div class="wrap">
+      <div class="block-head">
+        <span class="eyebrow">Submit Your Bid</span>
+        <h2>Tell us about your venue</h2>
+        <p>Submit your interest below and our team will follow up with full bid instructions. Questions? Email <a href="mailto:rfborlando2027@strxpo.com" style="color:var(--amber-mid);">rfborlando2027@strxpo.com</a> directly.</p>
+      </div>
+      <div class="bid-form-card">
+        <form id="venue-bid-form">
+          <div class="form-row">
+            <input name="fullName" type="text" placeholder="Contact Name" required>
+            <input name="email" type="email" placeholder="Email" required>
+          </div>
+          <div class="form-row full-row">
+            <input name="phone" type="tel" placeholder="Phone">
+            <select name="venueName" required>
+              <option value="" disabled selected>Venue Name</option>
+              <option value="Rosen Shingle Creek">Rosen Shingle Creek</option>
+              <option value="Caribe Royale">Caribe Royale</option>
+              <option value="Walt Disney World Swan & Dolphin">Walt Disney World Swan &amp; Dolphin</option>
+              <option value="Signia by Hilton Bonnet Creek">Signia by Hilton Bonnet Creek</option>
+              <option value="Rosen Centre">Rosen Centre</option>
+              <option value="Rosen Plaza">Rosen Plaza</option>
+              <option value="Wyndham Orlando Resort I-Drive">Wyndham Orlando Resort I-Drive</option>
+              <option value="Gaylord Palms">Gaylord Palms</option>
+              <option value="Venue Other">Venue Other</option>
+            </select>
+          </div>
+          <input type="hidden" name="role" value="Venue Bid">
+          <button type="submit" id="venue-submit-btn" class="btn btn-amber">Submit Bid Interest</button>
+        </form>
+        <div class="form-success" id="venue-form-success">
+          <h3>Thank you.</h3>
+          <p>Your submission has been received — our team will follow up with full bid instructions and the proposal checklist.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  const venueForm = document.getElementById('venue-bid-form');
+  const venueSuccess = document.getElementById('venue-form-success');
+  const venueSubmitBtn = document.getElementById('venue-submit-btn');
+  const formspreeURL = 'https://formspree.io/f/xoeaqbkb';
+  const googleSheetURL = 'https://script.google.com/macros/s/AKfycbxaQiMeZ_PkRyKpuYWODQiuULADs4DPPejQonJQJcAGcUIxW3FUN_6QGXrLnpVZIhPJ/exec';
+
+  venueForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    venueSubmitBtn.textContent = 'Submitting...';
+    venueSubmitBtn.disabled = true;
+    const formData = new FormData(venueForm);
+    Promise.all([
+      fetch(formspreeURL, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } }),
+      fetch(googleSheetURL, { method: 'POST', body: formData, mode: 'no-cors' })
+    ])
+    .then(() => {
+      venueForm.style.display = 'none';
+      venueSuccess.style.display = 'block';
+    })
+    .catch(error => {
+      console.error('Submission error:', error);
+      venueSubmitBtn.textContent = 'Error - Try Again';
+      venueSubmitBtn.disabled = false;
+    });
+  });
+</script>
+
+</body>
+</html>
