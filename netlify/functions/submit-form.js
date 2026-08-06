@@ -152,10 +152,26 @@ exports.handler = async function (event) {
         return { destination: 'mailchimp', ok: false, status: subscriberRes.status, error: errBody };
       }
 
-      // Step 2: explicitly set the tag — this is the fix. No field
+      // Step 2: explicitly set the tag(s) — this is the fix. No field
       // mapping, no guessing — the exact "role" value becomes the
       // exact tag, every time.
-      if (role) {
+      //
+      // One special case: the Real Estate page repurposes the
+      // "venueName" field to capture interest type (Exhibiting /
+      // Sponsoring / Speaking / General Inquiry), since it has no
+      // dedicated field of its own. We tag that too — but ONLY when
+      // it's one of these four known values, so the Venue RFB form's
+      // actual venue names (Rosen Shingle Creek, etc.) never become
+      // Mailchimp tags, per the earlier decision to keep those as
+      // Sheet data only, not tags.
+      const interestTypeValues = ['Exhibiting', 'Sponsoring', 'Speaking', 'General Inquiry'];
+      const tagsToApply = [];
+      if (role) tagsToApply.push({ name: role, status: 'active' });
+      if (venueName && interestTypeValues.includes(venueName)) {
+        tagsToApply.push({ name: venueName, status: 'active' });
+      }
+
+      if (tagsToApply.length > 0) {
         const tagRes = await fetch(`${mcBase}/lists/${MAILCHIMP_AUDIENCE_ID}/members/${subscriberHash}/tags`, {
           method: 'POST',
           headers: {
@@ -163,7 +179,7 @@ exports.handler = async function (event) {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            tags: [{ name: role, status: 'active' }],
+            tags: tagsToApply,
           }),
         });
 
