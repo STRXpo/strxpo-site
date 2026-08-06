@@ -14,8 +14,8 @@
 <meta property="og:url" content="https://strxpo.com/press.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:image" content="https://strxpo.com/assets/logo.png">
-<link rel="icon" type="image/png" href="assets/favicon-32.png">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon-180.png">
+<link rel="icon" type="image/png" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon-180.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -245,7 +245,7 @@
 <header>
   <div class="header-inner">
     <a href="/" class="brand" aria-label="STRXpo home">
-      <img src="assets/logo-transparent.svg" alt="STRXpo" class="brand-logo">
+      <img src="logo-transparent.svg" alt="STRXpo" class="brand-logo">
       <span class="brand-meta"><span class="city">Orlando</span> <span class="year">2027</span></span>
     </a>
     <nav>
@@ -306,45 +306,45 @@
       <div class="logo-grid">
         <div class="logo-card">
           <div class="logo-preview on-dark">
-            <img src="assets/logo-transparent.svg" alt="STRXpo logo on a dark background">
+            <img src="logo-transparent.svg" alt="STRXpo logo on a dark background">
           </div>
           <div class="logo-card-body">
             <h3>On Dark</h3>
             <p>Vector SVG, transparent background. Use for dark-background placements — the version used on this site's own nav and footer.</p>
-            <a class="dl" href="assets/logo-transparent.svg" download>Download .SVG &rarr;</a>
+            <a class="dl" href="logo-transparent.svg" download>Download .SVG &rarr;</a>
           </div>
         </div>
 
         <div class="logo-card">
           <div class="logo-preview on-light">
-            <img src="assets/logo-transparent.svg" alt="STRXpo logo on a light background">
+            <img src="logo-transparent.svg" alt="STRXpo logo on a light background">
           </div>
           <div class="logo-card-body">
             <h3>On Light</h3>
             <p>Same transparent SVG file, previewed here on a light background to check contrast and legibility.</p>
-            <a class="dl" href="assets/logo-transparent.svg" download>Download .SVG &rarr;</a>
+            <a class="dl" href="logo-transparent.svg" download>Download .SVG &rarr;</a>
           </div>
         </div>
 
         <div class="logo-card">
           <div class="logo-preview on-amber">
-            <img src="assets/logo-transparent.svg" alt="STRXpo logo on the brand amber gradient">
+            <img src="logo-transparent.svg" alt="STRXpo logo on the brand amber gradient">
           </div>
           <div class="logo-card-body">
             <h3>On Brand Amber</h3>
             <p>Same file again, previewed against the brand's own amber gradient — useful for sponsor decks and banners.</p>
-            <a class="dl" href="assets/logo-transparent.svg" download>Download .SVG &rarr;</a>
+            <a class="dl" href="logo-transparent.svg" download>Download .SVG &rarr;</a>
           </div>
         </div>
 
         <div class="logo-card">
           <div class="logo-preview on-light">
-            <img src="assets/logo.png" alt="STRXpo logo — PNG raster version">
+            <img src="logo.png" alt="STRXpo logo — PNG raster version">
           </div>
           <div class="logo-card-body">
             <h3>Raster Logo (PNG)</h3>
             <p>500&times;500px, opaque white background. For placements that require a flat raster file rather than vector.</p>
-            <a class="dl" href="assets/logo.png" download>Download .PNG &rarr;</a>
+            <a class="dl" href="logo.png" download>Download .PNG &rarr;</a>
           </div>
         </div>
       </div>
@@ -501,6 +501,8 @@
 
 </main>
 
+  <div id="footer-placeholder"></div>
+
 <script>
   const mediaForm = document.getElementById('media-form');
   const mediaSuccess = document.getElementById('media-form-success');
@@ -529,5 +531,20 @@
   });
 </script>
 
+
+<script>
+  fetch('footer.html')
+    .then(function(r) { return r.text(); })
+    .then(function(html) {
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(html, 'text/html');
+      var footerEl = doc.querySelector('footer');
+      var placeholder = document.getElementById('footer-placeholder');
+      if (footerEl && placeholder) {
+        placeholder.outerHTML = footerEl.outerHTML;
+      }
+    })
+    .catch(function(err) { console.error('Footer failed to load:', err); });
+</script>
 </body>
 </html>
