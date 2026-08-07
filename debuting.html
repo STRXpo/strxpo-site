@@ -150,6 +150,28 @@
     background:rgba(28,31,38,0.5);
   }
 
+  /* Learn-more forms */
+  .learn-more-card{
+    border:1px solid var(--slate-line); border-radius:14px;
+    background:rgba(28,31,38,0.5); padding:2rem; margin-top:2rem; max-width:640px;
+  }
+  .learn-more-card h3{ font-family:var(--font-display); font-size:1.15rem; font-weight:600; margin:0 0 0.5rem; }
+  .learn-more-card > p{ color:var(--slate-light); font-size:0.92rem; margin:0 0 1.5rem; }
+  .lm-row{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem; }
+  .lm-row.single{ grid-template-columns:1fr; }
+  @media (max-width:560px){ .lm-row{grid-template-columns:1fr;} }
+  .learn-more-card input, .learn-more-card textarea{
+    width:100%; padding:0.8rem 1rem; border-radius:8px; border:1px solid var(--slate-line);
+    background:var(--charcoal); color:var(--paper); font-family:var(--font-body); font-size:0.92rem;
+  }
+  .learn-more-card textarea{ resize:vertical; min-height:80px; }
+  .learn-more-card input::placeholder, .learn-more-card textarea::placeholder{ color:var(--paper-dim); }
+  .learn-more-card input:focus, .learn-more-card textarea:focus{ border-color:var(--amber-mid); outline:none; }
+  .learn-more-card button{ width:100%; margin-top:0.25rem; justify-content:center; }
+  .lm-success{ display:none; text-align:center; padding:1.25rem 0; }
+  .lm-success h4{ font-family:var(--font-display); color:var(--amber-mid); font-size:1.1rem; margin:0 0 0.4rem; }
+  .lm-success p{ color:var(--slate-light); font-size:0.9rem; margin:0; }
+
   /* Door prize band */
   .prize-band{
     border-top:1px solid var(--slate-line); border-bottom:1px solid var(--slate-line);
@@ -296,6 +318,30 @@
         <span class="who-chip">Staging specialists</span>
       </div>
       <a href="/turnover-staging.html" class="btn btn-ghost">For turnover &amp; staging pros &rarr;</a>
+
+      <div class="learn-more-card">
+        <h3>Learn More About TCS Marketplace</h3>
+        <p>Submit your information and TCS Marketplace will reach out directly.</p>
+        <form id="tcs-learn-form">
+          <div class="lm-row">
+            <input name="fullName" type="text" placeholder="Full Name" required>
+            <input name="email" type="email" placeholder="Email" required>
+          </div>
+          <div class="lm-row">
+            <input name="phone" type="tel" placeholder="Phone">
+            <input name="companyName" type="text" placeholder="Company Name">
+          </div>
+          <div class="lm-row single">
+            <textarea name="miscData" placeholder="Anything specific you'd like to know? (optional)"></textarea>
+          </div>
+          <input type="hidden" name="role" value="TCS Marketplace Interest">
+          <button type="submit" id="tcs-lm-btn" class="btn btn-amber">Request Info from TCS Marketplace</button>
+        </form>
+        <div class="lm-success" id="tcs-lm-success">
+          <h4>Thank you.</h4>
+          <p>Your information has been forwarded to TCS Marketplace &mdash; they'll be in touch directly.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -314,6 +360,30 @@
         <span class="who-chip">Turnover crews restocking on-site</span>
       </div>
       <a href="/who-attends.html" class="btn btn-ghost">See who else will be there &rarr;</a>
+
+      <div class="learn-more-card">
+        <h3>Learn More About Hospitality Guest Consumables</h3>
+        <p>Submit your information and Hospitality Guest Consumables will reach out directly.</p>
+        <form id="hgc-learn-form">
+          <div class="lm-row">
+            <input name="fullName" type="text" placeholder="Full Name" required>
+            <input name="email" type="email" placeholder="Email" required>
+          </div>
+          <div class="lm-row">
+            <input name="phone" type="tel" placeholder="Phone">
+            <input name="companyName" type="text" placeholder="Company Name">
+          </div>
+          <div class="lm-row single">
+            <textarea name="miscData" placeholder="Anything specific you'd like to know? (optional)"></textarea>
+          </div>
+          <input type="hidden" name="role" value="Hospitality Guest Consumables Interest">
+          <button type="submit" id="hgc-lm-btn" class="btn btn-amber">Request Info from HGC</button>
+        </form>
+        <div class="lm-success" id="hgc-lm-success">
+          <h4>Thank you.</h4>
+          <p>Your information has been forwarded to Hospitality Guest Consumables &mdash; they'll be in touch directly.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -365,6 +435,39 @@
       }
     })
     .catch(function(err) { console.error('Footer failed to load:', err); });
+</script>
+
+<script>
+  function wireLearnMoreForm(formId, btnId, successId) {
+    const form = document.getElementById(formId);
+    const success = document.getElementById(successId);
+    const btn = document.getElementById(btnId);
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      btn.textContent = 'Submitting...';
+      btn.disabled = true;
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+      fetch('/.netlify/functions/submit-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (!data.success) { console.error('Partial failure:', data.results); }
+        form.style.display = 'none';
+        success.style.display = 'block';
+      })
+      .catch(function(error) {
+        console.error('Submission error:', error);
+        btn.textContent = 'Error - Try Again';
+        btn.disabled = false;
+      });
+    });
+  }
+  wireLearnMoreForm('tcs-learn-form', 'tcs-lm-btn', 'tcs-lm-success');
+  wireLearnMoreForm('hgc-learn-form', 'hgc-lm-btn', 'hgc-lm-success');
 </script>
 
 </body>
