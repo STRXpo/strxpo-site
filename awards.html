@@ -127,28 +127,31 @@
   .block-head p{color:var(--slate-light); font-size:1.02rem; margin:0;}
 
   /* Spotlight awards */
-  .spotlight-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.75rem; }
-  @media (max-width:900px){ .spotlight-grid{grid-template-columns:1fr;} }
+  .spotlight-grid{ display:flex; flex-direction:column; gap:1.5rem; max-width:820px; margin:0 auto; }
   .spotlight-card{
+    display:flex; align-items:center; gap:2.5rem; text-align:left;
     border:1px solid rgba(217,164,65,0.3); border-radius:18px;
-    padding:2.5rem 2rem; background:linear-gradient(160deg, rgba(217,164,65,0.06), rgba(38,43,54,0.6));
-    text-align:center; position:relative;
+    padding:2rem 2.5rem; background:linear-gradient(160deg, rgba(217,164,65,0.06), rgba(38,43,54,0.6));
   }
   .spotlight-card.icon-award{ border-color:rgba(217,164,65,0.55); }
+  .spotlight-prize{ flex-shrink:0; min-width:200px; text-align:center; }
   .spotlight-badge{
     display:inline-block; font-family:var(--font-mono); font-size:0.68rem; letter-spacing:1.5px; text-transform:uppercase;
     color:var(--charcoal); background:linear-gradient(135deg, var(--amber-bright), var(--amber-deep));
-    border-radius:100px; padding:0.35rem 0.9rem; margin-bottom:1.25rem;
+    border-radius:100px; padding:0.35rem 0.9rem; margin-bottom:1rem;
   }
-  .spotlight-prize{
-    font-family:var(--font-display); font-weight:600; font-size:2.1rem;
+  .spotlight-prize-amt{
+    font-family:var(--font-display); font-weight:600; font-size:1.9rem;
     background:linear-gradient(135deg, var(--amber-bright), var(--amber-deep));
     -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-    margin-bottom:0.5rem;
+    margin-bottom:0.4rem;
   }
-  .spotlight-card h3{ font-family:var(--font-display); font-size:1.35rem; font-weight:600; margin:0 0 0.9rem; }
+  .spotlight-card h3{ font-family:var(--font-display); font-size:1.15rem; font-weight:600; margin:0; }
   .spotlight-card p{ color:var(--slate-light); font-size:0.95rem; margin:0; }
-
+  @media (max-width:640px){
+    .spotlight-card{ flex-direction:column; text-align:center; gap:1.25rem; padding:2rem 1.75rem; }
+    .spotlight-prize{ min-width:0; }
+  }
   /* Other categories */
   .cat-pills{ display:flex; flex-wrap:wrap; gap:0.75rem; justify-content:center; max-width:900px; margin:0 auto; }
   .cat-pill{
@@ -302,21 +305,27 @@
       </div>
       <div class="spotlight-grid">
         <div class="spotlight-card icon-award">
-          <span class="spotlight-badge">Most Prestigious</span>
-          <div class="spotlight-prize">The Icon Award</div>
-          <h3>STRXpo Icon Award</h3>
+          <div class="spotlight-prize">
+            <span class="spotlight-badge">Most Prestigious</span>
+            <div class="spotlight-prize-amt">The Icon Award</div>
+            <h3>STRXpo Icon Award</h3>
+          </div>
           <p>The single most prestigious honor of the night — bigger than any dollar figure could capture. Presented to an individual or business that has demonstrated exceptional leadership, innovation, or contribution to the short-term rental industry.</p>
         </div>
         <div class="spotlight-card">
-          <span class="spotlight-badge">For the Next Generation</span>
-          <div class="spotlight-prize">$5,000</div>
-          <h3>Aspiring Host Grant</h3>
+          <div class="spotlight-prize">
+            <span class="spotlight-badge">For the Next Generation</span>
+            <div class="spotlight-prize-amt">$5,000</div>
+            <h3>Aspiring Host Grant</h3>
+          </div>
           <p>Awarded to an ambitious aspiring host with a compelling plan to launch their first short-term rental property — funded directly toward their first lease and launch costs.</p>
         </div>
         <div class="spotlight-card">
-          <span class="spotlight-badge">Fan Favorite</span>
-          <div class="spotlight-prize">$2,500</div>
-          <h3>Host of the Year</h3>
+          <div class="spotlight-prize">
+            <span class="spotlight-badge">Fan Favorite</span>
+            <div class="spotlight-prize-amt">$2,500</div>
+            <h3>Host of the Year</h3>
+          </div>
           <p>Recognizing the host who best represents what this industry is all about — exceptional guest experience, operational excellence, and genuine hospitality.</p>
         </div>
       </div>
@@ -336,7 +345,7 @@
           <span class="cat-pill">Best Guest Experience</span>
           <span class="cat-pill">Innovation Award</span>
         </div>
-        <p style="margin-top:2rem;">The evening opens with a reception — appetizers, soft drinks, and a cash bar (sponsors and exhibitors each receive one comped drink) — before the ceremony begins.</p>
+        <p style="margin-top:2rem;">The evening opens with a reception — appetizers, soft drinks, and a cash bar (sponsors, exhibitors, and VIP/All-Access attendees each receive one comped drink) — before the ceremony begins.</p>
       </div>
     </div>
   </section>
@@ -416,7 +425,7 @@
     <div class="wrap cta-inner">
       <div class="cta-copy">
         <h2>Be in the room when it happens.</h2>
-        <p>Pre-register now to be the first to know when full event and ceremony details are announced.</p>
+        <p>Pre-registration opens September 3, 2026 &mdash; be among the first to know when full event and ceremony details are announced.</p>
       </div>
       <div class="cta-actions">
         <a href="/#pre-registration" class="btn btn-amber">Pre-Register</a>

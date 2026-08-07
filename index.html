@@ -238,17 +238,29 @@
     background:linear-gradient(135deg, var(--amber-bright), var(--amber-deep));
     -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
   }
-  .awards-numeral{
+  .numeral-row{
+    display:flex; align-items:center; justify-content:center; gap:0.6rem;
+  }
+  .num-one{
     font-family:var(--font-display); font-weight:700;
     font-size:clamp(7rem, 16vw, 12rem); line-height:0.85;
-    margin-bottom:0.5rem;
-    background:linear-gradient(135deg, var(--amber-bright), var(--amber-deep));
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-    filter:drop-shadow(0 0 40px rgba(217,164,65,0.25));
+    color:var(--slate-light);
+  }
+  .num-four{
+    font-family:var(--font-display); font-weight:700;
+    font-size:clamp(7rem, 16vw, 12rem); line-height:0.85;
+    color:var(--slate-light);
+  }
+  .awards-vertical{
+    font-family:var(--font-mono); font-weight:600; font-size:1.05rem;
+    letter-spacing:2px; line-height:1.15; text-transform:uppercase;
+    color:var(--amber-bright);
+    display:flex; flex-direction:column;
+    margin-left:0.2rem;
   }
   .awards-numeral-label{
     font-family:var(--font-mono); font-size:0.85rem; letter-spacing:4px; text-transform:uppercase;
-    color:var(--amber-bright); margin-top:0.25rem;
+    color:var(--amber-bright); margin-top:0.75rem;
   }
   .awards-teaser h2{
     font-family:var(--font-display); font-weight:600;
@@ -401,6 +413,140 @@
     margin:0 0 0.7rem;
   }
   .audience-card p{color:var(--slate-light); font-size:0.94rem; margin:0;}
+
+  /* Locked pre-registration notice */
+  .locked-notice{
+    display:none; margin-top:1.1rem; padding:1rem 1.2rem;
+    border:1px solid rgba(217,164,65,0.4); border-radius:10px;
+    background:rgba(217,164,65,0.07);
+  }
+  .locked-notice strong{ display:block; color:var(--amber-bright); font-size:0.95rem; margin-bottom:0.3rem; }
+  .locked-notice span{ color:var(--slate-light); font-size:0.88rem; }
+
+  /* Countdown clock */
+  .countdown-band{
+    border-top:1px solid var(--slate-line); border-bottom:1px solid var(--slate-line);
+    padding:4rem 0; text-align:center;
+    background:
+      radial-gradient(circle at 50% 20%, rgba(217,164,65,0.14) 0%, rgba(217,164,65,0) 60%),
+      var(--slate-mid);
+  }
+  .countdown-band .eyebrow{ justify-content:center; }
+  .countdown-band h2{
+    font-family:var(--font-display); font-weight:600;
+    font-size:clamp(1.8rem, 3.4vw, 2.7rem); line-height:1.1; letter-spacing:-0.5px;
+    max-width:20ch; margin:0 auto 1rem;
+  }
+  .countdown-band h2 em{
+    font-style:normal;
+    background:linear-gradient(135deg, var(--amber-bright), var(--amber-deep));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+  .countdown-band p.cd-copy{ color:var(--slate-light); font-size:1.05rem; max-width:56ch; margin:0 auto 2.5rem; }
+  .clock{ display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; margin-bottom:2.25rem; }
+  .clock-unit{
+    min-width:110px; padding:1.25rem 1rem;
+    border:1px solid rgba(217,164,65,0.35); border-radius:14px;
+    background:rgba(28,31,38,0.6);
+  }
+  .clock-num{
+    font-family:var(--font-display); font-weight:700; font-size:clamp(2.2rem, 5vw, 3.2rem); line-height:1;
+    background:linear-gradient(135deg, var(--amber-bright), var(--amber-deep));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+  .clock-label{
+    font-family:var(--font-mono); font-size:0.68rem; letter-spacing:2px; text-transform:uppercase;
+    color:var(--slate-light); margin-top:0.5rem;
+  }
+  @media (max-width:560px){ .clock-unit{ min-width:70px; padding:1rem 0.6rem; } }
+
+  /* Debut announcements */
+  .debut-band{
+    border-top:1px solid var(--slate-line); border-bottom:1px solid var(--slate-line);
+    padding:4.5rem 0;
+    background:
+      radial-gradient(circle at 80% 20%, rgba(217,164,65,0.12) 0%, rgba(217,164,65,0) 58%),
+      var(--charcoal);
+  }
+  .debut-band .block-head{ text-align:center; max-width:660px; margin:0 auto 2.75rem; }
+  .debut-band .eyebrow{ justify-content:center; }
+  .debut-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+  @media (max-width:820px){ .debut-grid{grid-template-columns:1fr;} }
+  .debut-card{
+    border:1px solid rgba(217,164,65,0.35); border-radius:16px;
+    padding:2.25rem 2rem; background:linear-gradient(160deg, rgba(217,164,65,0.07), var(--slate-mid));
+    display:flex; flex-direction:column;
+    transition:border-color .18s ease, transform .18s ease;
+  }
+  .debut-card:hover{ border-color:rgba(217,164,65,0.6); transform:translateY(-3px); }
+  .debut-pill{
+    display:inline-flex; align-self:flex-start; align-items:center;
+    font-family:var(--font-mono); font-size:0.65rem; letter-spacing:2px; text-transform:uppercase;
+    color:var(--charcoal); background:linear-gradient(135deg, var(--amber-bright), var(--amber-deep));
+    border-radius:100px; padding:0.35rem 0.9rem; margin-bottom:1.2rem;
+  }
+  .debut-card h3{ font-family:var(--font-display); font-size:1.5rem; font-weight:600; margin:0 0 0.35rem; }
+  .debut-card .sub{
+    font-family:var(--font-mono); font-size:0.75rem; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--amber-mid); margin:0 0 1.1rem;
+  }
+  .debut-card p{ color:var(--slate-light); font-size:0.95rem; margin:0 0 1.75rem; flex-grow:1; }
+  .debut-card .btn{ align-self:flex-start; }
+  .prize-strip{
+    margin-top:2.5rem; text-align:center;
+    border:1px dashed rgba(217,164,65,0.45); border-radius:14px;
+    padding:1.6rem 2rem;
+  }
+  .prize-strip p{ margin:0; color:var(--paper); font-size:1rem; }
+  .prize-strip strong{ color:var(--amber-bright); }
+
+  /* Three pillars */
+  .pillars-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+  @media (max-width:900px){ .pillars-grid{grid-template-columns:1fr;} }
+  .pillar-card{
+    border:1px solid var(--slate-line); border-radius:14px;
+    padding:2.25rem 1.9rem; background:var(--slate-mid);
+    display:flex; flex-direction:column;
+    transition:border-color .18s ease, transform .18s ease;
+  }
+  .pillar-card:hover{ border-color:rgba(217,164,65,0.45); transform:translateY(-3px); }
+  .pillar-num{
+    font-family:var(--font-mono); font-size:0.72rem; letter-spacing:2px;
+    color:var(--amber-mid); margin-bottom:1rem;
+  }
+  .pillar-card h3{ font-family:var(--font-display); font-size:1.3rem; font-weight:600; margin:0 0 0.8rem; }
+  .pillar-card p{ color:var(--slate-light); font-size:0.94rem; margin:0 0 1.75rem; flex-grow:1; }
+  .pillar-card .btn{ align-self:flex-start; }
+
+  /* Why Show Up — dual-audience draws section */
+  .draws-band{
+    border-top:1px solid var(--slate-line); border-bottom:1px solid var(--slate-line);
+    background:var(--slate-mid);
+  }
+  .draws-grid{ display:grid; grid-template-columns:1fr 1fr; gap:0; }
+  @media (max-width:820px){ .draws-grid{grid-template-columns:1fr;} }
+  .draws-col{ padding:3.5rem 3rem; }
+  .draws-col.attendees{ border-right:1px solid var(--slate-line); }
+  @media (max-width:820px){ .draws-col.attendees{ border-right:none; border-bottom:1px solid var(--slate-line); } }
+  .draws-col .tag{
+    font-family:var(--font-mono); font-size:0.72rem; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--amber-mid); margin-bottom:0.9rem; display:block;
+  }
+  .draws-col h3{
+    font-family:var(--font-display); font-weight:600; font-size:1.5rem;
+    margin:0 0 1.5rem; letter-spacing:-0.3px;
+  }
+  .draw-item{ display:flex; gap:0.9rem; margin-bottom:1.4rem; align-items:flex-start; }
+  .draw-item:last-child{ margin-bottom:0; }
+  .draw-num{
+    font-family:var(--font-mono); font-size:0.8rem; color:var(--amber-mid);
+    flex-shrink:0; margin-top:0.2rem;
+  }
+  .draw-item h4{
+    font-family:var(--font-body); font-weight:600; font-size:0.98rem;
+    color:var(--paper); margin:0 0 0.3rem;
+  }
+  .draw-item p{ color:var(--slate-light); font-size:0.88rem; margin:0; line-height:1.5; }
 
   /* Exhibit teaser */
   .exhibit{
@@ -567,7 +713,7 @@
   <!-- ============ JOIN US ============ -->
   <section class="join-us">
     <div class="wrap">
-      <p class="eyebrow">September 2027 &nbsp;&middot;&nbsp; Orlando, FL</p>
+      <p class="eyebrow">September 23&ndash;25, 2027 &nbsp;&middot;&nbsp; Orlando, FL</p>
       <h2>Join us at</h2>
       <img src="logo-transparent.svg" alt="STRXpo" class="join-us-logo">
       <p class="join-us-location"><span class="city">Orlando</span> <span class="year">2027</span></p>
@@ -608,7 +754,7 @@
     </div>
 
     <div class="wrap hero-content">
-      <p class="eyebrow">September 2027 &nbsp;&middot;&nbsp; Orlando, FL</p>
+      <p class="eyebrow">September 23&ndash;25, 2027 &nbsp;&middot;&nbsp; Orlando, FL</p>
       <h1>The ultimate national stage for short-term rental <em>excellence</em>, unlocked.</h1>
       <p class="tagline">Where elite operators, visionary hosts, top-tier turnover teams, and cutting-edge platforms converge. Three high-impact days in Orlando designed to scale your business and redefine industry standards.</p>
 
@@ -644,11 +790,62 @@
           <button type="submit" id="submit-btn" class="btn btn-amber">Pre-Register</button>
         </form>
 
+        <div id="locked-notice" class="locked-notice">
+          <strong>Pre-registration opens Thursday, September 3, 2026 at 12:00 AM ET.</strong>
+          <span>Mark it down. Your details are ready to go &mdash; come back the moment the doors open and you'll be among the first in line.</span>
+        </div>
+
         <div id="form-success" class="form-success">
           ✓ You're on the list! We'll keep you updated as we get closer to Orlando 2027.
         </div>
 
         <p class="signup-note">No spam. Just strategic launch updates as they unfold.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COUNTDOWN ============ -->
+  <section class="countdown-band">
+    <div class="wrap">
+      <p class="eyebrow">Thursday, September 3, 2026 &nbsp;&middot;&nbsp; 12:00 AM ET</p>
+      <h2>Pre-registration opens in <em>days, not months</em>.</h2>
+      <p class="cd-copy">The first names on the list get first access to early-bird pricing, speaker slots, and prime exhibitor placement. When this clock hits zero, the line forms &mdash; and the founding year only happens once.</p>
+      <div class="clock" id="countdown-clock">
+        <div class="clock-unit"><div class="clock-num" id="cd-days">--</div><div class="clock-label">Days</div></div>
+        <div class="clock-unit"><div class="clock-num" id="cd-hours">--</div><div class="clock-label">Hours</div></div>
+        <div class="clock-unit"><div class="clock-num" id="cd-mins">--</div><div class="clock-label">Minutes</div></div>
+        <div class="clock-unit"><div class="clock-num" id="cd-secs">--</div><div class="clock-label">Seconds</div></div>
+      </div>
+      <a href="#pre-registration" class="btn btn-amber">Get Ready to Register &rarr;</a>
+    </div>
+  </section>
+
+  <!-- ============ DEBUT ANNOUNCEMENTS ============ -->
+  <section class="debut-band">
+    <div class="wrap">
+      <div class="block-head">
+        <span class="eyebrow">Announcing &nbsp;&middot;&nbsp; Industry Debuts</span>
+        <h2 style="font-family:var(--font-display); font-weight:600; font-size:clamp(1.8rem, 3.2vw, 2.5rem); margin:0 0 0.9rem; letter-spacing:-0.4px;">Two companies are launching on this floor.</h2>
+        <p style="color:var(--slate-light); font-size:1.02rem; margin:0;">People come to trade shows to see what's new. This year, that means watching two brand-new companies step onto the industry stage for the first time &mdash; and both are handing out door prizes to whoever gets there first.</p>
+      </div>
+      <div class="debut-grid">
+        <div class="debut-card">
+          <span class="debut-pill">Industry Debut</span>
+          <h3>TCS Marketplace</h3>
+          <p class="sub">Turnover &middot; Cleaning &middot; Staging</p>
+          <p>The new marketplace where hosts and property managers post turnover, cleaning, and staging jobs &mdash; and where crews and solopreneurs claim them. No more 11 PM group-chat scrambles hunting for same-day coverage.</p>
+          <a href="/debuting.html#tcs" class="btn btn-amber">See What They're Building &rarr;</a>
+        </div>
+        <div class="debut-card">
+          <span class="debut-pill">Industry Debut</span>
+          <h3>Hospitality Guest Consumables</h3>
+          <p class="sub">One Vendor &middot; Every Guest Consumable</p>
+          <p>Snacks, soft drinks, bottled water, coffee pods, condiments &mdash; the industry's new single-source vendor, selling direct to hosts and property management companies. One order. One invoice. Everything guests expect to find waiting.</p>
+          <a href="/debuting.html#hgc" class="btn btn-amber">See What They're Building &rarr;</a>
+        </div>
+      </div>
+      <div class="prize-strip">
+        <p><strong>Door prizes, all three days.</strong> Both companies are giving prizes to the first <strong>10 people who sign up at their booth each day</strong> &mdash; 60 chances across the event, but only for those who get to the floor early.</p>
       </div>
     </div>
   </section>
@@ -659,8 +856,11 @@
       <div>
         <img src="logo-transparent.svg" alt="STRXpo" class="awards-teaser-logo">
         <div class="awards-word">Awards</div>
-        <div class="awards-numeral">14</div>
-        <div class="awards-numeral-label">Awards. One Night.</div>
+        <div class="numeral-row">
+          <span class="num-one">1</span><span class="num-four">4</span>
+          <span class="awards-vertical">A<br>W<br>A<br>R<br>D<br>S</span>
+        </div>
+        <div class="awards-numeral-label">One Ceremony. One Night.</div>
       </div>
       <div>
         <span class="eyebrow">Friday, September 24, 2027</span>
@@ -707,6 +907,83 @@
     </div>
   </section>
 
+  <!-- ============ THREE PILLARS ============ -->
+  <section class="block">
+    <div class="wrap">
+      <div class="block-head" style="text-align:center; margin-left:auto; margin-right:auto;">
+        <span class="eyebrow" style="justify-content:center;">The Foundation</span>
+        <h2>Three groups this industry cannot run without.</h2>
+        <p>Hosts get the credit. But without the crews who turn properties over, the agents who source them, and the leasing managers who make them available in the first place, there is no short-term rental industry at all. STRXpo is built to put all three on the main floor.</p>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-num">01</div>
+          <h3>Turnover &amp; Staging</h3>
+          <p>The crews who make a property guest-ready between every checkout and check-in &mdash; solopreneurs, growing companies, and the marketplaces where the work gets posted. Nothing happens without them, and it's time they had the floor.</p>
+          <a href="/turnover-staging.html" class="btn btn-amber">See the Invitation &rarr;</a>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-num">02</div>
+          <h3>Real Estate Agents</h3>
+          <p>The professionals who identify and close the investment-friendly properties hosts actually build portfolios on. Without agents sourcing the inventory, there is nothing to acquire and nothing to rent.</p>
+          <a href="/real-estate-agents.html" class="btn btn-amber">See the Invitation &rarr;</a>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-num">03</div>
+          <h3>Leasing Managers</h3>
+          <p>The apartment community decision-makers who set short-term rental policy at the door. Their approval opens entire categories of inventory &mdash; or closes them completely.</p>
+          <a href="/real-estate-agents.html" class="btn btn-amber">See the Invitation &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY SHOW UP ============ -->
+  <section class="draws-band">
+    <div class="wrap draws-grid">
+      <div class="draws-col attendees">
+        <span class="tag">For Attendees</span>
+        <h3>Why walk the floor</h3>
+        <div class="draw-item">
+          <span class="draw-num">01</span>
+          <div><h4>See what's actually new</h4><p>Not a catalog. The real tools, platforms, and services this industry is running on right now — in person, before everyone else finds out about them.</p></div>
+        </div>
+        <div class="draw-item">
+          <span class="draw-num">02</span>
+          <div><h4>Compare, side by side</h4><p>Every option in one room instead of a dozen separate sales calls. Walk the floor once, leave with a real answer.</p></div>
+        </div>
+        <div class="draw-item">
+          <span class="draw-num">03</span>
+          <div><h4>Talk to the people who built it</h4><p>Direct access to the operators and founders behind the tools — not a script, not a gatekeeper.</p></div>
+        </div>
+        <div class="draw-item">
+          <span class="draw-num">04</span>
+          <div><h4>Walk in ready to decide</h4><p>This floor is built for people with the authority to actually buy — not just browse and report back.</p></div>
+        </div>
+      </div>
+      <div class="draws-col">
+        <span class="tag">For Exhibitors &amp; Sponsors</span>
+        <h3>Why claim your spot</h3>
+        <div class="draw-item">
+          <span class="draw-num">01</span>
+          <div><h4>Meet buyers with real budget</h4><p>Hosts, property managers, and management companies who came to invest in their next tool — not window shop.</p></div>
+        </div>
+        <div class="draw-item">
+          <span class="draw-num">02</span>
+          <div><h4>Put your name in front of the room</h4><p>Every exhibitor and sponsor gets seen by the entire audience this event was built for — not a segmented slice of it.</p></div>
+        </div>
+        <div class="draw-item">
+          <span class="draw-num">03</span>
+          <div><h4>Your competitors will be here</h4><p>The vacation rental industry's first national trade show only happens once a year. Being first in the room is worth more than being safe on the sidelines.</p></div>
+        </div>
+        <div class="draw-item">
+          <span class="draw-num">04</span>
+          <div><h4>Own the inaugural spotlight</h4><p>First-year exhibitors get remembered. There's no "we were here since year one" claim to make once year two arrives.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ EXHIBIT / SPONSOR ============ -->
   <section class="exhibit" id="exhibit">
     <div class="wrap block exhibit-inner">
@@ -728,12 +1005,57 @@
 
 
 <script>
+  // ---- Pre-registration opens September 3, 2026 at 12:00 AM ET ----
+  // Stored as UTC so every visitor sees the same moment regardless of their
+  // own timezone. September is EDT (UTC-4), so midnight ET = 04:00 UTC.
+  // Change this one line if the open date moves.
+  const PREREG_OPEN = new Date(Date.UTC(2026, 8, 3, 4, 0, 0));
+
+  function preregIsOpen() { return new Date() >= PREREG_OPEN; }
+
+  // ---- Countdown clock ----
+  const cdDays = document.getElementById('cd-days');
+  const cdHours = document.getElementById('cd-hours');
+  const cdMins = document.getElementById('cd-mins');
+  const cdSecs = document.getElementById('cd-secs');
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function tick() {
+    const diff = PREREG_OPEN - new Date();
+    if (diff <= 0) {
+      cdDays.textContent = '00'; cdHours.textContent = '00';
+      cdMins.textContent = '00'; cdSecs.textContent = '00';
+      return;
+    }
+    const s = Math.floor(diff / 1000);
+    cdDays.textContent = pad(Math.floor(s / 86400));
+    cdHours.textContent = pad(Math.floor((s % 86400) / 3600));
+    cdMins.textContent = pad(Math.floor((s % 3600) / 60));
+    cdSecs.textContent = pad(s % 60);
+  }
+  if (cdDays) { tick(); setInterval(tick, 1000); }
+
   const form = document.getElementById('waitlist-form');
   const successMsg = document.getElementById('form-success');
   const submitBtn = document.getElementById('submit-btn');
+  const lockedNotice = document.getElementById('locked-notice');
+
+  // Reflect the locked state in the button before anyone touches the form.
+  if (!preregIsOpen()) {
+    submitBtn.textContent = 'Opens Sept 3, 2026 · 12:00 AM ET';
+  }
 
   form.addEventListener('submit', function(e) {
     e.preventDefault();
+
+    // Gate: don't submit anything before the open date — just tell them when.
+    if (!preregIsOpen()) {
+      lockedNotice.style.display = 'block';
+      lockedNotice.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      return;
+    }
+
     submitBtn.textContent = 'Submitting...';
     submitBtn.disabled = true;
 
