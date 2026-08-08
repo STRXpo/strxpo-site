@@ -491,7 +491,7 @@
 
 
 <script>
-  fetch('footer.html')
+  fetch('footer.html?v=' + Date.now())
     .then(function(r) { return r.text(); })
     .then(function(html) {
       var parser = new DOMParser();
